@@ -1,0 +1,74 @@
+{
+  "type": "panel",
+  "items": {
+    "host": {
+      "type": "text",
+      "label": "Graphite-Server / Hostname",
+      "default": "127.0.0.1",
+      "required": true
+    },
+    "port": {
+      "type": "number",
+      "label": "Carbon plaintext TCP port",
+      "default": 2003,
+      "min": 1,
+      "max": 65535
+    },
+    "prefix": {
+      "type": "text",
+      "label": "Standard-Präfix",
+      "default": "iobroker"
+    },
+    "defaultMode": {
+      "type": "select",
+      "label": "Standard-Modus",
+      "options": [
+        {
+          "label": "Bei Wertänderung",
+          "value": "change"
+        },
+        {
+          "label": "Alle X Minuten",
+          "value": "interval"
+        }
+      ],
+      "default": "change"
+    },
+    "defaultIntervalMinutes": {
+      "type": "number",
+      "label": "Standardintervall (Minuten)",
+      "default": 5,
+      "min": 1,
+      "max": 1440
+    },
+    "connectTimeoutMs": {
+      "type": "number",
+      "label": "Verbindungs-Timeout (ms)",
+      "default": 5000,
+      "min": 500,
+      "max": 60000
+    },
+    "reconnectDelayMs": {
+      "type": "number",
+      "label": "Wiederverbindung (ms)",
+      "default": 5000,
+      "min": 1000,
+      "max": 120000
+    },
+    "sendInitialValues": {
+      "type": "checkbox",
+      "label": "Beim Start aktuelle Werte senden",
+      "default": true
+    },
+    "replaceDots": {
+      "type": "checkbox",
+      "label": "Punkte in Objekt-IDs durch Unterstriche ersetzen",
+      "default": true
+    },
+    "includeAckFalse": {
+      "type": "checkbox",
+      "label": "Auch ack=false loggen",
+      "default": false
+    }
+  }
+}

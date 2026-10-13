@@ -1,0 +1,18 @@
+{
+  "name": "iobroker.graphite",
+  "version": "0.1.0",
+  "description": "Log selected ioBroker states to Graphite Carbon.",
+  "main": "main.js",
+  "license": "MIT",
+  "keywords": [
+    "iobroker",
+    "graphite",
+    "carbon"
+  ],
+  "dependencies": {
+    "@iobroker/adapter-core": "^3.2.3"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "type": "panel",
+  "items": {
+    "enabled": {
+      "type": "checkbox",
+      "label": "Nach Graphite loggen",
+      "default": false
+    },
+    "mode": {
+      "type": "select",
+      "label": "Logging-Modus",
+      "options": [
+        {
+          "label": "Bei Wertänderung",
+          "value": "change"
+        },
+        {
+          "label": "Regelmäßig alle X Minuten",
+          "value": "interval"
+        }
+      ],
+      "default": "change"
+    },
+    "intervalMinutes": {
+      "type": "number",
+      "label": "Intervall in Minuten",
+      "default": 5,
+      "min": 1,
+      "max": 1440
+    },
+    "metricPath": {
+      "type": "text",
+      "label": "Optionaler individueller Metric-Pfad",
+      "help": "Leer lassen für Standard-Präfix + Objekt-ID."
+    },
+    "booleanMode": {
+      "type": "select",
+      "label": "Boolean-Umwandlung",
+      "options": [
+        {
+          "label": "false=0, true=1",
+          "value": "01"
+        },
+        {
+          "label": "false=0, true=100",
+          "value": "0100"
+        }
+      ],
+      "default": "01"
+    }
+  }
+}

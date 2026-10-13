@@ -1,0 +1,43 @@
+{
+  "common": {
+    "name": "graphite",
+    "version": "0.1.0",
+    "title": "Graphite Logger",
+    "titleLang": {
+      "en": "Graphite Logger",
+      "de": "Graphite Logger"
+    },
+    "desc": "Logs selected ioBroker states to Graphite Carbon plaintext receiver.",
+    "authors": [
+      "OpenAI"
+    ],
+    "license": "MIT",
+    "platform": "Javascript/Node.js",
+    "mode": "daemon",
+    "connectionType": "local",
+    "dataSource": "push",
+    "enabled": true,
+    "messagebox": false,
+    "loglevel": "info",
+    "supportCustoms": true,
+    "adminUI": {
+      "config": "json",
+      "tab": "materialize",
+      "custom": "json"
+    }
+  },
+  "native": {
+    "host": "127.0.0.1",
+    "port": 2003,
+    "prefix": "iobroker",
+    "defaultMode": "change",
+    "defaultIntervalMinutes": 5,
+    "connectTimeoutMs": 5000,
+    "reconnectDelayMs": 5000,
+    "sendInitialValues": true,
+    "replaceDots": true,
+    "includeAckFalse": false
+  },
+  "objects": [],
+  "instanceObjects": []
+}
