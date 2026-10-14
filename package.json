@@ -1,6 +1,6 @@
 {
   "name": "iobroker.graphite",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "description": "Log selected ioBroker states to Graphite Carbon.",
   "main": "main.js",
   "license": "MIT",

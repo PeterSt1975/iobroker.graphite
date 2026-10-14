@@ -1,7 +1,9 @@
 # ioBroker Graphite Logger – Prototyp
 
 - Graphite Host/Port (Carbon plaintext TCP, normalerweise 2003) und Standard-Präfix in der Instanzkonfiguration.
-- Pro Objekt im ioBroker-Objekt-Tab: Logging aktivieren, Modus wählen, Intervall setzen.
+- Pro Objekt im ioBroker-Objekt-Tab: Logging aktivieren, Modus wählen, Intervall setzen und optional einen individuellen Graphite-Pfad angeben.
+- Individueller Pfad ist relativ zum Standard-Präfix und unterstützt Punkt-Hierarchien, z. B. `heizung.vorlauf.temp` → `iobroker.heizung.vorlauf.temp`.
+- Wenn der individuelle Pfad leer ist, wird die ioBroker-Objekt-ID verwendet; dabei gilt die globale Option „Punkte in Objekt-IDs durch Unterstriche ersetzen“.
 - Boolean wird standardmäßig als false=0 / true=1 gesendet (optional 0/100).
 - Zahlen und numerische Strings werden übertragen; Text/JSON/null werden übersprungen.
 - Bei Wertänderung werden Ereignisse gesendet; im Intervallmodus wird der aktuelle Zustand periodisch abgefragt.

@@ -30,8 +30,8 @@
     },
     "metricPath": {
       "type": "text",
-      "label": "Optionaler individueller Metric-Pfad",
-      "help": "Leer lassen für Standard-Präfix + Objekt-ID."
+      "label": "Vollständiger Graphite-Pfad (optional)",
+      "help": "Wird exakt als vollständiger Pfad gesendet, ohne Standard-Präfix. Beispiel: haus.heizung.temperatur.vorlauf. Punkte bilden Unterpfade. Leer lassen: Objekt-ID und Standard-Präfix verwenden."
     },
     "booleanMode": {
       "type": "select",

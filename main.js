@@ -39,7 +39,7 @@ class GraphiteAdapter {
 
   clean(value) {
     return String(value || '').trim().replace(/[^A-Za-z0-9_.-]/g, '_')
-      .replace(/\\.{2,}/g, '.').replace(/^\\.|\\.$/g, '');
+      .replace(/\.{2,}/g, '.').replace(/^\.|\.$/g, '');
   }
 
   getSettings(obj) {
@@ -111,9 +111,13 @@ class GraphiteAdapter {
     else if (typeof value === 'number') { if (!Number.isFinite(value)) return; }
     else if (typeof value === 'string' && value.trim() !== '' && Number.isFinite(Number(value))) value = Number(value);
     else return; // Graphite plaintext numeric protocol: skip text/objects.
-    const rawPath = s.metricPath || id;
-    const path = this.clean(this.cfg.replaceDots ? rawPath.replace(/\./g, '_') : rawPath); 
-    const metric = [this.cfg.prefix, path].filter(Boolean).join('.');
+    const customPath = typeof s.metricPath === 'string' && s.metricPath.trim() !== '';
+    const rawPath = customPath ? s.metricPath.trim() : id;
+    // Custom paths preserve dots as Graphite hierarchy; replaceDots applies only to object IDs.
+    const path = this.clean(!customPath && this.cfg.replaceDots ? rawPath.replace(/\./g, '_') : rawPath);
+    if (!path) return;
+    // A custom metricPath is the complete Graphite path; do not prepend the global prefix.
+    const metric = customPath ? path : [this.cfg.prefix, path].filter(Boolean).join('.');
     const ts = Math.floor((Number(state.ts) > 0 ? Number(state.ts) : Date.now()) / 1000);
     this.enqueue(`${metric} ${value} ${ts}\n`);
   }
@@ -134,8 +138,7 @@ class GraphiteAdapter {
     this.socket = sock;
     sock.setTimeout(Number(this.cfg.connectTimeoutMs) || 5000);
     sock.connect(Number(this.cfg.port) || 2003, this.cfg.host || '127.0.0.1', () => {
-      this.connected = true; this.connecting = false;
-      sock.setTimeout(0);
+      this.connected = true; this.connecting = false; sock.setTimeout(0);
       this.adapter.log.info('Connected to Graphite Carbon');
       this.flush();
     });

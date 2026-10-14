@@ -4,8 +4,7 @@
     "host": {
       "type": "text",
       "label": "Graphite-Server / Hostname",
-      "default": "127.0.0.1",
-      "required": true
+      "default": "127.0.0.1"
     },
     "port": {
       "type": "number",
